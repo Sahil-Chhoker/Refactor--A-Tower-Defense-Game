@@ -157,6 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetingRange: 2.69
+  rotationSpeed: 200
 --- !u!4 &4943416
 Transform:
   m_ObjectHideFlags: 0
