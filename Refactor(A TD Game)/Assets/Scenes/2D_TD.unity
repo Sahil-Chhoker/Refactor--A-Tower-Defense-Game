@@ -12587,6 +12587,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7668717536961073196, guid: 30ca1d4c3076c6d45bbcffa8c1c73143, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 5446231805468287464, guid: 58ae72dcba33020499a0fc50da75e355, type: 3}
+    - target: {fileID: 7668717536961073196, guid: 30ca1d4c3076c6d45bbcffa8c1c73143, type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 8579493646848089133, guid: 30ca1d4c3076c6d45bbcffa8c1c73143, type: 3}
       propertyPath: m_Name
       value: Turret
