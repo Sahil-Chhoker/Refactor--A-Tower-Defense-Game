@@ -2844,7 +2844,7 @@ GameObject:
   - component: {fileID: 843123910}
   - component: {fileID: 843123909}
   m_Layer: 5
-  m_Name: Test Turret
+  m_Name: Slowmo Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3944,9 +3944,9 @@ MonoBehaviour:
   - name: Basic Turret
     cost: 100
     prefab: {fileID: 8579493646848089133, guid: 30ca1d4c3076c6d45bbcffa8c1c73143, type: 3}
-  - name: Test Turret
-    cost: 150
-    prefab: {fileID: 8579493646848089133, guid: 636f1888eb162ed43ae606907c1fc146, type: 3}
+  - name: Slowmo Turret
+    cost: 200
+    prefab: {fileID: 2277383825259464422, guid: bcd8da66f912cca45968194f2ad5960d, type: 3}
 --- !u!1001 &999647885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4266,7 +4266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TEST TURRET
+  m_text: SLOWMO TURRET
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
