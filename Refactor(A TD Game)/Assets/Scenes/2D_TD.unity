@@ -3860,6 +3860,7 @@ GameObject:
   - component: {fileID: 990951842}
   - component: {fileID: 990951844}
   - component: {fileID: 990951845}
+  - component: {fileID: 990951846}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -3924,10 +3925,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 1037218495412916696, guid: 02cf9d68642ee9b43b23fe69fdbe3bf0, type: 3}
+  - {fileID: 1037218495412916696, guid: 02cf9d68642ee9b43b23fe69fdbe3bf0, type: 3}
+  - {fileID: 1037218495412916696, guid: b7efe995a71c5d744abcd056772bfdf6, type: 3}
   baseEnemies: 8
-  enemiesPerSeconds: 0.5
+  enemiesPerSecond: 0.5
   timeBetweenWaves: 5
   diffulcityScalingFactor: 0.75
+  enemiesPerSecondCap: 15
 --- !u!114 &990951845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3947,6 +3951,18 @@ MonoBehaviour:
   - name: Slowmo Turret
     cost: 200
     prefab: {fileID: 2277383825259464422, guid: bcd8da66f912cca45968194f2ad5960d, type: 3}
+--- !u!114 &990951846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 990951841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07e14ff59473616438439d397394b76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &999647885
 PrefabInstance:
   m_ObjectHideFlags: 0
