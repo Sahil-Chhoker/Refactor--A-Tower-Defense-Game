@@ -746,6 +746,7 @@ MonoBehaviour:
   targetingRange: 2.69
   rotationSpeed: 200
   bps: 1
+  baseUpgradeCost: 100
 --- !u!1 &9101123984677800590
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class Plot : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        if(UIManager.main.IsHoveringUI())   return;
         sr.color = hoverColor;
     }
 
