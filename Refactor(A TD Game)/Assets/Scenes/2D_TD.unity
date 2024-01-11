@@ -7759,8 +7759,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1844382835}
-  - component: {fileID: 1844382837}
   - component: {fileID: 1844382836}
+  - component: {fileID: 1844382837}
+  - component: {fileID: 1844382838}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -7827,6 +7828,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currencyUI: {fileID: 1389267747}
   anim: {fileID: 1844382836}
+--- !u!114 &1844382838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844382834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dad930bad3845d47aea73401a5c6332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouse_over: 0
 --- !u!1001 &1850890161
 PrefabInstance:
   m_ObjectHideFlags: 0
