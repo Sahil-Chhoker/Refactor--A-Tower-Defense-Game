@@ -39,7 +39,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if(target == null)
+        if (target == null || !target.gameObject.activeSelf)
         {
             FindTarget();
             return;
@@ -64,13 +64,20 @@ public class Turret : MonoBehaviour
     }
 
     private void FindTarget()
-    {
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2)transform.position, 0f, enemyMask);
+    {   
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, targetingRange, enemyMask);
 
-        if(hits.Length > 0)
+        foreach (Collider2D collider in colliders)
         {
-            target = hits[0].transform;
+            if (!collider.gameObject.CompareTag("CapturedArmy"))
+            {
+                target = collider.transform;
+                return;
+            }
         }
+
+        // If no active targets found, set target to null
+        target = null;
     }
 
     private bool CheckTargetIsInRange()

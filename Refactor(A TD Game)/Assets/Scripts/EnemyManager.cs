@@ -54,5 +54,5 @@ public class EnemyManager : MonoBehaviour
     public void ResetSpeed()
     {
         moveSpeed = baseSpeed;
-    }
+    }   
 }
