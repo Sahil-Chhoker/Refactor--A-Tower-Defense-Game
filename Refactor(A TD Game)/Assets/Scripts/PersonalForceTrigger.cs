@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,22 +31,43 @@ public class PersonalForceTrigger : MonoBehaviour
 
     private void SummonArmy()
     {
-        foreach(GameObject _prefabToSummon in PersonalForce.main.personalForce)
+        foreach(GameObject summonedPrefab in PersonalForce.main.personalForce)
         {
             //Reset thier positions as ours
-            _prefabToSummon.transform.position = summonPosition.position;
-            _prefabToSummon.transform.parent = summonPosition;
+            summonedPrefab.transform.position = summonPosition.position;
+            summonedPrefab.transform.parent = summonPosition;
 
             //Set them active
-            _prefabToSummon.SetActive(true);
-            Destroy(_prefabToSummon.GetComponent<EnemyManager>());
+            summonedPrefab.SetActive(true);
+            Destroy(summonedPrefab.GetComponent<EnemyManager>());
 
             //Reset thier health
-            Health healthScript = _prefabToSummon.GetComponent<Health>();
+            Health healthScript = summonedPrefab.GetComponent<Health>();
             healthScript.hitPoints = healthScript.baseHitPoints;
+
+            //Add a new Logic
         }
         //Remove the enemy from your arsenal
         PersonalForce.main.RemoveFromPersonalForce();
+    }
+
+    private Transform FindTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach(GameObject enemy in enemies)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
+            if(distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy;
+            }
+        }
+
+        return closestEnemy.transform;
     }
 
 }

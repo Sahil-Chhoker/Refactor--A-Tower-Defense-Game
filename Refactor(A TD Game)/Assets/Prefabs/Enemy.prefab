@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7296947237327582842}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 2
+  currencyWorth: 50
+  baseHitPoints: 0
 --- !u!1 &4043641322847917271
 GameObject:
   m_ObjectHideFlags: 0

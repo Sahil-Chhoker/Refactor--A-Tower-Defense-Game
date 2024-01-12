@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3295645743700959174}
   m_Layer: 6
   m_Name: TankEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 4
   currencyWorth: 100
+  baseHitPoints: 0
 --- !u!58 &4816331877815080856
 CircleCollider2D:
   m_ObjectHideFlags: 0
