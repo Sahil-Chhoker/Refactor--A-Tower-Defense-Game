@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PersonalForceTrigger : MonoBehaviour
 {
@@ -46,12 +47,16 @@ public class PersonalForceTrigger : MonoBehaviour
             healthScript.hitPoints = healthScript.baseHitPoints;
 
             //Add a new Logic
+            NavMeshAgent agent = summonedPrefab.AddComponent<NavMeshAgent>();
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+            agent.SetDestination(FindTarget());
         }
         //Remove the enemy from your arsenal
         PersonalForce.main.RemoveFromPersonalForce();
     }
 
-    private Transform FindTarget()
+    private Vector3 FindTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closestEnemy = null;
@@ -67,7 +72,7 @@ public class PersonalForceTrigger : MonoBehaviour
             }
         }
 
-        return closestEnemy.transform;
+        return closestEnemy.transform.position;
     }
 
 }

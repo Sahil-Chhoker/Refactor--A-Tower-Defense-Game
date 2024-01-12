@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6223100720383665482}
   - component: {fileID: 3789773317837287941}
   - component: {fileID: 8137720168914047967}
+  - component: {fileID: 5326564004756051126}
   m_Layer: 0
   m_Name: Plot
   m_TagString: Untagged
@@ -145,3 +146,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sr: {fileID: 6223100720383665482}
   hoverColor: {r: 0, g: 0, b: 0, a: 1}
+  towerObj: {fileID: 0}
+  turret: {fileID: 0}
+--- !u!114 &5326564004756051126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565803917545471406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
