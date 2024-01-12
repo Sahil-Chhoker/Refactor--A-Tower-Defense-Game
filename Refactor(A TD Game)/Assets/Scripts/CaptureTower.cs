@@ -8,14 +8,14 @@ public class CaptureTower : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
-    private GameObject capturingParent;
     
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 4f;
     [SerializeField] private float aps = 0.25f; //Attacks Per Second
     [SerializeField] private int captureSize = 5;
 
-    private int enemiesCaptured = 0;
+    private GameObject capturingParent;
+    // private int enemiesCaptured = 0;
     private float timeUntilFire;
 
     private void Start()
@@ -40,9 +40,8 @@ public class CaptureTower : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (enemiesCaptured >= captureSize)
+            if (PersonalForce.main.enemiesCaptured >= captureSize)
             {
-                Debug.Log("Triggred");
                 break; // Break if the required number of enemies are already captured
             }
 
@@ -70,8 +69,7 @@ public class CaptureTower : MonoBehaviour
             EnemySpawner.onEnemyDestroy.Invoke();
 
             PersonalForce.main.AddToPersonalForce(currEnemy);
-            enemiesCaptured++;
-            Debug.Log("Enemies : " + enemiesCaptured);
+            // PersonalForce.main.enemiesCaptured++;
         }
     }
 
