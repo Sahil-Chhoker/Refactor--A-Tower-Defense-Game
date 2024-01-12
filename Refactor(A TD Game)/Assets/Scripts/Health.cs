@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,7 +9,13 @@ public class Health : MonoBehaviour
     [SerializeField] public int hitPoints = 2;
     [SerializeField] private int currencyWorth = 50;
 
+    [HideInInspector] public int baseHitPoints;
     private bool isDestroyed = false;
+
+    private void Start()
+    {
+        baseHitPoints = hitPoints;
+    }
 
     public void TakeDamage(int dmg)
     {

@@ -69,7 +69,6 @@ public class CaptureTower : MonoBehaviour
             EnemySpawner.onEnemyDestroy.Invoke();
 
             PersonalForce.main.AddToPersonalForce(currEnemy);
-            // PersonalForce.main.enemiesCaptured++;
         }
     }
 

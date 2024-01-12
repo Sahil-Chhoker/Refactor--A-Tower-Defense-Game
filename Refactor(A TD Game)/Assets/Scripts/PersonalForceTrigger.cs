@@ -20,7 +20,6 @@ public class PersonalForceTrigger : MonoBehaviour
 
         if(timeUntilFire >= timeBetweenSummons)
         {
-            Debug.Log("Can Summon");
             if(Input.GetKeyDown(triggerKey))
             {
                 SummonArmy();
@@ -31,17 +30,19 @@ public class PersonalForceTrigger : MonoBehaviour
 
     private void SummonArmy()
     {
-        int sizeOfArmy = PersonalForce.main.GetLengthOfPersonalForce();
-
         foreach(GameObject _prefabToSummon in PersonalForce.main.personalForce)
         {
             //Reset thier positions as ours
             _prefabToSummon.transform.position = summonPosition.position;
             _prefabToSummon.transform.parent = summonPosition;
 
+            //Set them active
             _prefabToSummon.SetActive(true);
             Destroy(_prefabToSummon.GetComponent<EnemyManager>());
-            // summonedPrefab.AddComponent<>
+
+            //Reset thier health
+            Health healthScript = _prefabToSummon.GetComponent<Health>();
+            healthScript.hitPoints = healthScript.baseHitPoints;
         }
         //Remove the enemy from your arsenal
         PersonalForce.main.RemoveFromPersonalForce();
