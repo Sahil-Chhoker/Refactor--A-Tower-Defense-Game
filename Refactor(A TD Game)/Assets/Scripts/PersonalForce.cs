@@ -7,7 +7,6 @@ public class PersonalForce : MonoBehaviour
 {
     public static PersonalForce main;
 
-    private int captureSize;
     public List<GameObject> personalForce; // Use List instead of an array
 
     private void Awake()
@@ -24,10 +23,5 @@ public class PersonalForce : MonoBehaviour
     public bool IsInPersonalForce(GameObject _prefab)
     {
         return personalForce.Contains(_prefab);
-    }
-
-    public void SetSize(int _captureSize)
-    {
-        captureSize = _captureSize;
     }
 }

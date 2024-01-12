@@ -8,19 +8,19 @@ public class CaptureTower : MonoBehaviour
     
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
+    private GameObject capturingParent;
     
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 4f;
     [SerializeField] private float aps = 0.25f; //Attacks Per Second
     [SerializeField] private int captureSize = 5;
-    [SerializeField] private GameObject capturingParent;
 
     private int enemiesCaptured = 0;
     private float timeUntilFire;
 
     private void Start()
     {
-        PersonalForce.main.SetSize(captureSize);
+        capturingParent = GameObject.FindGameObjectWithTag("CapturedArmy");
     }
 
     private void Update()
@@ -32,8 +32,6 @@ public class CaptureTower : MonoBehaviour
             CaptureEnemies();
             timeUntilFire = 0.0f;
         }
-
-        PersonalForce.main.SetSize(captureSize);
     }
 
     private void CaptureEnemies()
