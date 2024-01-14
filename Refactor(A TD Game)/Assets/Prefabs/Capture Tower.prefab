@@ -82,9 +82,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetingRange: 4.3
-  aps: 10
+  aps: 0.2
   captureSize: 5
-  capturingParent: {fileID: 0}
 --- !u!1 &2935541896919468372
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 453021759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.6603774, g: 0.37753648, b: 0.37753648, a: 1}
@@ -240,7 +239,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 453021759
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.5773585, g: 0.19935206, b: 0.19935206, a: 1}
