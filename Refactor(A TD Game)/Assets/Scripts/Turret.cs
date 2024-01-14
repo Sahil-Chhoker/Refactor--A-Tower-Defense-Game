@@ -17,6 +17,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f; //Bullets Per Second
     [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private float upgradeBPSScale;
+    [SerializeField] private float upgradeRangeScale;
+    [SerializeField] private float upgradeCostScale;
 
     private float bpsBase;
     private float targetingRangeBase;
@@ -112,17 +115,17 @@ public class Turret : MonoBehaviour
 
     private float CalculateBPS()
     {
-        return bps * Mathf.Pow(level, 0.6f);
+        return bps * Mathf.Pow(level, upgradeBPSScale);
     }
 
     private float CalculateRange()
     {
-        return targetingRangeBase * Mathf.Pow(level, 0.4f);
+        return targetingRangeBase * Mathf.Pow(level, upgradeRangeScale);
     }
 
     private int CalculateCost()
     {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostScale));
     }
 
     public void OpenUpgradeUI()
