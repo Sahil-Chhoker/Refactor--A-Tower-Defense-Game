@@ -326,9 +326,9 @@ MonoBehaviour:
   captureSize: 5
   baseUpgradeCost: 100
   upgradeAPSScale: 0.3
-  upgradeRangeScale: 0.4
+  upgradeRangeScale: 0.2
   upgradeCostScale: 0.9
-  upgradeCaptureSizeScale: 0.5
+  upgradeCaptureSizeScale: 0.2
 --- !u!1 &2935541896919468372
 GameObject:
   m_ObjectHideFlags: 0

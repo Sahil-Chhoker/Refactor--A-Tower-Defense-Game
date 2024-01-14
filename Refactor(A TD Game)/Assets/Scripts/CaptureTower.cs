@@ -22,6 +22,7 @@ public class CaptureTower : MonoBehaviour
 
     private float apsBase;
     private float targetingRangeBase;
+    private float captureSizeBase;
 
     private GameObject capturingParent;
     private float timeUntilFire;
@@ -32,6 +33,7 @@ public class CaptureTower : MonoBehaviour
     {
         apsBase = aps;
         targetingRangeBase = targetingRange;
+        captureSizeBase = captureSize;
         
         upgradeButton.onClick.AddListener(Upgrade);
         
@@ -118,7 +120,7 @@ public class CaptureTower : MonoBehaviour
 
     private int CalculateCaptureSize()
     {
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCaptureSizeScale));
+        return Mathf.RoundToInt(captureSizeBase * Mathf.Pow(level, upgradeCaptureSizeScale));
     }
 
     public void OpenUpgradeUI()
