@@ -1,23 +1,40 @@
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class CaptureTower : MonoBehaviour
 {
     
     [Header("References")]
     [SerializeField] private LayerMask enemyMask;
+    [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private Button upgradeButton;
     
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 4f;
     [SerializeField] private float aps = 0.25f; //Attacks Per Second
     [SerializeField] private int captureSize = 5;
+    [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private float upgradeAPSScale;
+    [SerializeField] private float upgradeRangeScale;
+    [SerializeField] private float upgradeCostScale;
+    [SerializeField] private float upgradeCaptureSizeScale;
+
+    private float apsBase;
+    private float targetingRangeBase;
 
     private GameObject capturingParent;
-    // private int enemiesCaptured = 0;
     private float timeUntilFire;
+
+    private int level = 1;
 
     private void Start()
     {
+        apsBase = aps;
+        targetingRangeBase = targetingRange;
+        
+        upgradeButton.onClick.AddListener(Upgrade);
+        
         capturingParent = GameObject.FindGameObjectWithTag("CapturedArmy");
     }
 
@@ -68,6 +85,51 @@ public class CaptureTower : MonoBehaviour
 
             PersonalForce.main.AddToPersonalForce(currEnemy);
         }
+    }
+
+    public void Upgrade()
+    {
+        if(baseUpgradeCost > LevelManager.main.currency) return;
+
+        LevelManager.main.SpendCurrency(CalculateCost());
+        level++;
+
+        aps = CalculateAPS();
+        targetingRange = CalculateRange();
+        captureSize = CalculateCaptureSize();
+
+        CloseUpgradeUI();
+    }
+
+    private float CalculateAPS()
+    {
+        return aps * Mathf.Pow(level, upgradeAPSScale);
+    }
+
+    private float CalculateRange()
+    {
+        return targetingRangeBase * Mathf.Pow(level, upgradeRangeScale);
+    }
+
+    private int CalculateCost()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCostScale));
+    }
+
+    private int CalculateCaptureSize()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, upgradeCaptureSizeScale));
+    }
+
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+        UIManager.main.SetHoveringState(false);
     }
 
     private void OnDrawGizmosSelected()

@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Plot : MonoBehaviour
@@ -7,7 +8,8 @@ public class Plot : MonoBehaviour
     [SerializeField] private Color hoverColor;
 
     public GameObject towerObj;
-    public Turret turret;
+    public Turret _turretScript;
+    public CaptureTower _captureTowerScript;
     private Color startColor;
 
 
@@ -31,9 +33,14 @@ public class Plot : MonoBehaviour
     {
         if(UIManager.main.IsHoveringUI()) return;
         
-        if(towerObj != null)
+        if(towerObj != null && towerObj.CompareTag("NormalTurret"))
         {
-            turret.OpenUpgradeUI();
+            _turretScript.OpenUpgradeUI();
+            return;
+        }
+        else if(towerObj != null && towerObj.CompareTag("CaptureTurret"))
+        {
+            _captureTowerScript.OpenUpgradeUI();
             return;
         }
 
@@ -47,7 +54,8 @@ public class Plot : MonoBehaviour
 
         LevelManager.main.SpendCurrency(towerToBuild.cost);
         towerObj = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
-        turret = towerObj.GetComponent<Turret>();
+        _turretScript = towerObj.GetComponent<Turret>();
+        _captureTowerScript = towerObj.GetComponent<CaptureTower>();
     }
 
 }
