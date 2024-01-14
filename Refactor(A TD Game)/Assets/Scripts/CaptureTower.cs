@@ -91,7 +91,7 @@ public class CaptureTower : MonoBehaviour
 
     public void Upgrade()
     {
-        if(baseUpgradeCost > LevelManager.main.currency) return;
+        if(CalculateCost() > LevelManager.main.currency) return;
 
         LevelManager.main.SpendCurrency(CalculateCost());
         level++;
