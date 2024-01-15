@@ -9,8 +9,10 @@ public class PersonalForceTrigger : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] private float timeBetweenSummons = 20.0f;
+    [SerializeField] private int damgeOfPersonalArmy = 1;
 
     private float timeUntilFire;
+    private GameObject target;
 
     private void Update()
     {
@@ -24,6 +26,16 @@ public class PersonalForceTrigger : MonoBehaviour
                 timeUntilFire = 0.0f;
             }
         }
+
+        if (target == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            target = FindTarget();
+            target.GetComponentInChildren<SpriteRenderer>().color = Color.black;
+        }
+        else if(target == null)
+            Debug.Log("No Target");
+
+        // AttackEnemyArmy();
     }
 
     private void SummonArmy()
@@ -46,29 +58,39 @@ public class PersonalForceTrigger : MonoBehaviour
             NavMeshAgent agent = summonedPrefab.AddComponent<NavMeshAgent>();
             agent.updateRotation = false;
             agent.updateUpAxis = false;
-            agent.SetDestination(FindTarget());
+            agent.SetDestination(target.transform.position);
         }
         //Remove the enemy from your arsenal
         PersonalForce.main.RemoveFromPersonalForce();
     }
 
-    private Vector3 FindTarget()
+    private GameObject FindTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (enemies.Length == 0)
+        {
+            return null; // No enemies in the scene, return null
+        }
+
         GameObject closestEnemy = null;
         float closestDistance = Mathf.Infinity;
 
-        foreach(GameObject enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if(distance < closestDistance)
+            if (distance < closestDistance)
             {
                 closestDistance = distance;
                 closestEnemy = enemy;
             }
         }
 
-        return closestEnemy.transform.position;
+        return closestEnemy;
     }
 
+    private void AttackEnemyArmy()
+    {
+        Debug.Log("Attacking");
+    }
 }
