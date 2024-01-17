@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEditor;
 
 public class PersonalForceTrigger : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private PersonalArmyAttack _personalArmyScript;
     [SerializeField] private Transform summonPosition;
     [SerializeField] private KeyCode triggerKey = KeyCode.RightAlt;
 
     [Header("Attributes")]
     [SerializeField] private float timeBetweenSummons = 20.0f;
     [SerializeField] private int damgeOfPersonalArmy = 1;
+    [SerializeField] private float detectionRange = 10f;
 
     private float timeUntilFire;
     private GameObject target;
@@ -29,7 +32,7 @@ public class PersonalForceTrigger : MonoBehaviour
 
         if (target == null && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
         {
-            target = FindTarget();
+            target = _personalArmyScript.FindTarget(detectionRange);
             target.GetComponentInChildren<SpriteRenderer>().color = Color.black;
         }
         else if(target == null)
@@ -59,38 +62,19 @@ public class PersonalForceTrigger : MonoBehaviour
             agent.updateRotation = false;
             agent.updateUpAxis = false;
             agent.SetDestination(target.transform.position);
+
+            //Give the Logic to attack
+            summonedPrefab.AddComponent<PersonalArmyAttack>();
         }
         //Remove the enemy from your arsenal
         PersonalForce.main.RemoveFromPersonalForce();
     }
 
-    private GameObject FindTarget()
+    
+    private void OnDrawGizmosSelected()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (enemies.Length == 0)
-        {
-            return null; // No enemies in the scene, return null
-        }
-
-        GameObject closestEnemy = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject enemy in enemies)
-        {
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distance < closestDistance)
-            {
-                closestDistance = distance;
-                closestEnemy = enemy;
-            }
-        }
-
-        return closestEnemy;
+        Handles.color = Color.cyan;
+        Handles.DrawWireDisc(transform.position, transform.forward, detectionRange);
     }
 
-    private void AttackEnemyArmy()
-    {
-        Debug.Log("Attacking");
-    }
 }
